@@ -1,0 +1,20 @@
+.input-group-addon
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.form-control{
+    color: rgb(40, 94, 142);
+    border: 1px solid rgb(40, 94, 142);
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.row{
+margin-top: 50px;
+}

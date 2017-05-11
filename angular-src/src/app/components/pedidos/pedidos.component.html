@@ -1,0 +1,131 @@
+<h3 class="page-header col-md-2">Pedidos</h3>
+
+
+  <ul class="nav nav-tabs col-md-10">
+    <li class="active"><a href="#cadastrar_Pedido" data-toggle="tab" aria-expanded="false">Cadastrar</a></li>
+    <li class=""><a href="#consultar_Pedido" data-toggle="tab" aria-expanded="true">Consultar</a></li>
+    <li class=""><a href="#pedido_Amostras" data-toggle="tab" aria-expanded="true">Solicitar Amostras</a></li>
+  </ul>
+
+
+<div id="myTabContent" class="tab-content">
+
+  <!--CADASTRAR PEDIDO-->
+  <div class="tab-pane fade active in" id="cadastrar_Pedido">
+    <div class="form-group col-md-11">
+      <div class="input-group">
+        <label for="">Cliente</label>
+        <input type="text" class="form-control input-sm" [(ngModel)]="consulta_cliente" name="consulta_cliente" placeholder="Cliente" />
+      </div>
+    </div>
+    <div class="col-md-1">
+      <label>Novo</label>
+      <button class="btn btn-primary btn-sm btn-block" (click)="consultaCliente()"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+    <div *ngIf="clientePedido">
+      <div class="col-md-4">
+        <label for="">CNPJ</label>
+        <p class="cnpj">{{clientePedido.cnpj}}</p>
+      </div>
+      <div class="col-md-4">
+        <label for="">Insc.Estadual</label>
+        <p>{{clientePedido.insc_estadual}}</p>
+      </div>
+      <div class="col-md-4">
+        <label for="">Categoria</label>
+        <p>{{clientePedido.categoria}}</p>
+      </div>
+      <div class="col-md-12">
+        <label for="">Razão Social</label>
+        <p>{{clientePedido.razao}}</p>
+      </div>
+      <div class="col-md-4">
+        <label for="">Região</label>
+        <p>{{clientePedido.regiao}}</p>
+      </div>
+      <div class="col-md-4">
+        <label for="">Contato</label>
+        <p>{{clientePedido.contato}}</p>
+      </div>
+      <div class="col-md-4">
+        <label for="">Cidade</label>
+        <p>{{clientePedido.contato}}</p>
+      </div>      
+    </div>
+    
+    <div class="col-md-12">
+      <input class="btn btn-success btn-block btn-sm" (click)="cadastraCliente()" value="CONFIRMAR">
+    </div>
+  </div>
+
+
+
+
+  <!--Seleciona Cliente-->
+  <div class="modal fade" id="select_cliente" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" style="overflow: hidden">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <h4 class="modal-title custom_align" id="Heading">Selecione o Cliente</h4>
+        </div>
+        <div class="modal-body" style="overflow-y: auto; height: auto">
+          <table class="table table-striped table-hover col-md-12" *ngIf="clientes">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>CNPJ</th>
+                <th>Nome</th>
+                <th>Local</th>
+                <th>Representante</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let cliente of clientes; let i = index" [attr.data-index]="i">
+              <tr style="cursor:pointer;" (click)="selectCliente(cliente)">
+                <td>{{cliente._id}}</td>
+                <td class="cnpj">{{cliente.cnpj}}</td>
+                <td>{{cliente.razao}}</td>
+                <td>{{cliente.enderecos[0].cidade}}/{{cliente.enderecos[0].estado}}</td>
+                <td>{{cliente.representante}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Sair</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!--CONSULTAR PEDIDO-->
+  <div class="tab-pane fade" id="consultar_Pedido">
+
+  </div>
+
+
+
+
+
+
+
+
+  <!--SOLICITAR AMOSTRAS-->
+  <div class="tab-pane fade" id="pedido_Amostras">
+
+  </div>
+
+
+
+
+
+
+
+</div>

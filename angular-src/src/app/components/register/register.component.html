@@ -1,0 +1,50 @@
+<h3 class="page-header" style="margin-top: 0px;">Cadastrar Novo Usuário</h3>
+<div class="row">
+  <form (submit)="onRegisterSubmit()">
+  <div class="form-group col-md-6">
+      <label>Nome:</label>
+      <input type="text" [(ngModel)]="firstName" name="firstName" class="form-control input-sm" placeholder="Nome">
+    </div>
+  <div class="form-group col-md-6">
+      <label>Sobrenome:</label>
+      <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control input-sm" placeholder="Sobrenome">
+  </div>
+  <div class="form-group col-md-6">
+      <label>E-mail:</label>
+      <input type="text" [(ngModel)]="email" name="email" class="form-control input-sm" placeholder="E-mail">
+  </div>
+  <div class="form-group col-md-6">
+      <label>Telefone:</label>
+      <input type="text" [(ngModel)]="telefone" name="telefone" class="phone form-control input-sm" placeholder="Telefone">
+  </div>
+  <div class="col-md-12" style="padding: 0">
+    <div class="form-group col-md-6">
+        <label>Acesso:</label>
+        <select class="form-control input-sm" [(ngModel)]="acesso" name="acesso" id="acesso" (change)="admin()" >
+          <option value="" disabled=true >Selecione a Empresa:</option>
+          <option value="consulta">Consulta</option>
+          <option value="cadastro">Cadastro</option>
+          <option value="admin" >Admin</option>
+        </select>
+    </div>
+    <div *ngIf="!if_admin" class="form-group col-md-6">
+        <label for="">Empresa</label>
+        <select class="form-control input-sm" [(ngModel)]="idEmpresa" name="idEmpresa" id="idEmpresa" >
+          <option value="" disabled=true label="Selecione a Empresa:" ></option> 
+          <option *ngFor="let representante of representantes; let i = index" [value]="representante._id">{{representante.razao}}</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username" name="username" class="form-control input-sm" placeholder="Username">
+  </div>
+  <div class="form-group col-md-6">
+      <label>Senha:</label>
+      <input type="password" [(ngModel)]="password" name="password" class="form-control input-sm" placeholder="Senha">
+  </div>
+  <div class="col-md-12">
+    <input type="submit" class="btn btn-primary btn-block btn-sm" value="Cadastrar">
+  </div>
+</form>
+</div>
