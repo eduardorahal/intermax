@@ -231,7 +231,7 @@ export class ProdutosComponent implements OnInit {
     }
     this.postService.modificaDesconto(Desconto).subscribe(data => {
         if(data.success){
-          this.limpaBusca();
+          this.limpaBuscaDesconto();
           this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeout:5000});
           this.router.navigate(['/produtos']);
         } else {
