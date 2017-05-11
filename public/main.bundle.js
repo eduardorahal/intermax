@@ -75,7 +75,7 @@ var AuthService = (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
+        return this.http.post('users/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -83,7 +83,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/profile', { headers: headers })
+        return this.http.get('users/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.loadToken = function () {
@@ -111,7 +111,7 @@ var AuthService = (function () {
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
+        return this.http.post('users/authenticate', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user, jwt) {
@@ -2060,7 +2060,7 @@ var GetService = (function () {
             return Promise.resolve(this.produto);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:3000/produtos/consulta')
+            _this.http.get('produtos/consulta')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (produto) {
                 _this.produto = produto;
@@ -2076,7 +2076,7 @@ var GetService = (function () {
             return Promise.resolve(this.representante);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:3000/representantes/consulta')
+            _this.http.get('representantes/consulta')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (representante) {
                 _this.representante = representante;
@@ -2090,7 +2090,7 @@ var GetService = (function () {
             return Promise.resolve(this.regiao);
         }
         return new Promise(function (resolve) {
-            _this.http.get('http://localhost:3000/regioes/consulta')
+            _this.http.get('regioes/consulta')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (regiao) {
                 _this.regiao = regiao;
@@ -2327,95 +2327,95 @@ var PostService = (function () {
     PostService.prototype.adicionaProduto = function (produto) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/produtos/adiciona', produto, { headers: headers })
+        return this.http.post('produtos/adiciona', produto, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.modificaDesconto = function (desconto) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/produtos/desconto', desconto, { headers: headers })
+        return this.http.post('produtos/desconto', desconto, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.adicionaCliente = function (cliente) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/clientes/adiciona', cliente, { headers: headers })
+        return this.http.post('clientes/adiciona', cliente, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaClientes = function (consulta_cliente) {
-        return this.http.post('http://localhost:3000/clientes/consulta', consulta_cliente)
+        return this.http.post('clientes/consulta', consulta_cliente)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaClientesID = function (consulta_id) {
-        return this.http.post('http://localhost:3000/clientes/consultaid', consulta_id)
+        return this.http.post('clientes/consultaid', consulta_id)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaClientesMulti = function (consulta_tmp) {
-        return this.http.post('http://localhost:3000/clientes/consultamulti', consulta_tmp)
+        return this.http.post('clientes/consultamulti', consulta_tmp)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.modificaCliente = function (cliente) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/clientes/modifica', cliente, { headers: headers })
+        return this.http.post('clientes/modifica', cliente, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.removeCliente = function (cliente) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/clientes/remove', cliente, { headers: headers })
+        return this.http.post('clientes/remove', cliente, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.adicionaRepresentante = function (representante) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/representantes/adiciona', representante, { headers: headers })
+        return this.http.post('representantes/adiciona', representante, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaRepresentante = function (consulta_representante) {
-        return this.http.post('http://localhost:3000/representantes/consulta', consulta_representante)
+        return this.http.post('representantes/consulta', consulta_representante)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaRepresentantesID = function (consulta_id) {
-        return this.http.post('http://localhost:3000/representantes/consultaid', consulta_id)
+        return this.http.post('representantes/consultaid', consulta_id)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaRepresentantesMulti = function (consulta_tmp) {
-        return this.http.post('http://localhost:3000/representantes/consultamulti', consulta_tmp)
+        return this.http.post('representantes/consultamulti', consulta_tmp)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.modificaRepresentante = function (representante) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/representantes/modifica', representante, { headers: headers })
+        return this.http.post('representantes/modifica', representante, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.removeRepresentante = function (representante) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/representantes/remove', representante, { headers: headers })
+        return this.http.post('representantes/remove', representante, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.adicionaRegiao = function (regiao) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/regioes/adiciona', regiao, { headers: headers })
+        return this.http.post('regioes/adiciona', regiao, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.consultaRegiao = function (consulta_regiao) {
-        return this.http.post('http://localhost:3000/regioes/consulta', consulta_regiao)
+        return this.http.post('regioes/consulta', consulta_regiao)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.modificaRegiao = function (regiao) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/regioes/modifica', regiao, { headers: headers })
+        return this.http.post('regioes/modifica', regiao, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.removeRegiao = function (regiao) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/regioes/remove', regiao, { headers: headers })
+        return this.http.post('regioes/remove', regiao, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService = __decorate([
