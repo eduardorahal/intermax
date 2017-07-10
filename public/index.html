@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>INTERMAX</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.cep').mask('00.000-000');
+      $('.date').mask('00/00/0000');
+      $('.time').mask('00:00:00');
+      $('.date_time').mask('00/00/0000 00:00:00');
+      $('.phone').mask('(00) 00000-0000');
+      $('.cpf').mask('000.000.000-00');
+      $('.cnpj').mask('00.000.000/0000-00');
+      $('.money').mask('###.###.###.###.###,00', {reverse: true});
+      $('.percent').mask('##0,00 %', {reverse: true});
+      $('.number').mask('###.###.###.###.###,999999', {reverse: true});
+    });
+  </script>
+  <link  rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="intermax_ico.png">
+</head>
+<body>
+  <app-root>Loading...</app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
