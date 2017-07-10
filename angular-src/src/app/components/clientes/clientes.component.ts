@@ -59,6 +59,8 @@ export class ClientesComponent implements OnInit {
   
   idEmpresa: any;
 
+  xyz = "enderecos[0]"
+
   constructor(
     private getService: GetService,
     private postService: PostService,

@@ -12,8 +12,9 @@
   <li id="abaCadastro" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">Cadastro <span class="caret"></span></a>
     <ul class="dropdown-menu">
       <li class=""><a href="#cadastrar_Produto" data-toggle="tab" aria-expanded="true">Novo Produto</a></li>
-      <li class=""><a href="#descontos" data-toggle="tab" aria-expanded="true">Descontos</a></li>
-      <li class=""><a href="#estoque" data-toggle="tab" aria-expanded="true">Estoque</a></li>
+      <li class=""><a href="#editar_Produto" data-toggle="tab" aria-expanded="true">Editar Produto</a></li>
+      <li class=""><a href="#descontos" data-toggle="tab" aria-expanded="true" (click)="limpaBuscaDesconto()">Descontos</a></li>
+      <li class=""><a href="#estoque" data-toggle="tab" aria-expanded="true" (click)="limpaBuscaEstoque()">Estoque</a></li>
     </ul>
   </li>
 </ul>
@@ -27,20 +28,16 @@
 
       <!--Tabela REV-->
       <div class="tab-pane fade active in" id="tabela_Rev">
+        <h4>Revenda / Varejo</h4>
+        <hr>
         <table class="table table-striped table-hover col-md-12">
         <thead>
           <tr>
             <th>#</th>
+            <th>Tipo</th>
             <th>Linha</th>
-            <th>Formato</th>
             <th>Descrição</th>
-            <th>Capa</th>
-            <th>Med.</th>
-            <th>Un/Cx</th>
-            <th>Cx/Pt</th>
-            <!--<th>Mt/Cx</th>
-            <th>Mt/Pt</th>
-            <th>Mt/Cn</th>-->
+            <th>Medidas (C x L x E)</th>
             <th>Preço CD1</th>
             <th>Preço CD3</th>
           </tr>
@@ -48,18 +45,12 @@
         <tbody *ngFor="let produto of produtos; let i = index" [attr.data-index]="i">
           <tr>
             <td>{{i + 1}}</td>
+            <td>{{produto.tipoProduto}}</td>
             <td>{{produto.linhaProduto}}</td>
-            <td>{{produto.formatoProduto}}</td>
             <td>{{produto.descricaoProduto}}</td>
-            <td>{{produto.capaProduto}}</td>
-            <td>{{produto.medicaoProduto}}</td>
-            <td>{{produto.qtUnidCx}}</td>
-            <td>{{produto.qtCxPallet}}</td>
-            <!--<td class="money">{{produto.qtMetroCx}}</td>
-            <td class="money">{{produto.qtMetroPt}}</td>
-            <td class="money">{{produto.qtMetroCn}}</td>-->
-            <td><span>R$ </span><span class="money">{{produto.rev_cd1}}</span></td>
-            <td><span>R$ </span><span class="money">{{produto.rev_cd3}}</span></td>
+            <td>{{produto.compProduto}}mm x {{produto.largProduto}}mm x {{produto.espProduto}}mm</td>
+            <td><span>R$ </span><span class="money">{{produto.precos[0].preco}}</span></td>
+            <td><span>R$ </span><span class="money">{{produto.precos[1].preco}}</span></td>
           </tr>
         </tbody>
         </table>
@@ -69,20 +60,16 @@
 
     <!--Tabela ENG-->
       <div class="tab-pane fade" id="tabela_Eng">
+        <h4>Engenharia</h4>
+        <hr>
         <table class="table table-striped table-hover col-md-12">
         <thead>
           <tr>
             <th>#</th>
+            <th>Tipo</th>
             <th>Linha</th>
-            <th>Formato</th>
             <th>Descrição</th>
-            <th>Capa</th>
-            <th>Med.</th>
-            <th>Un/Cx</th>
-            <th>Cx/Pt</th>
-            <!--<th>Mt/Cx</th>
-            <th>Mt/Pt</th>
-            <th>Mt/Cn</th>-->
+            <th>Medidas (C x L x E)</th>
             <th>Preço CD1</th>
             <th>Preço CD3</th>
           </tr>
@@ -90,18 +77,12 @@
         <tbody *ngFor="let produto of produtos; let i = index" [attr.data-index]="i">
           <tr>
             <td>{{i + 1}}</td>
+            <td>{{produto.tipoProduto}}</td>
             <td>{{produto.linhaProduto}}</td>
-            <td>{{produto.formatoProduto}}</td>
             <td>{{produto.descricaoProduto}}</td>
-            <td>{{produto.capaProduto}}</td>
-            <td>{{produto.medicaoProduto}}</td>
-            <td>{{produto.qtUnidCx}}</td>
-            <td>{{produto.qtCxPallet}}</td>
-            <!--<td class="money">{{produto.qtMetroCx}}</td>
-            <td class="money">{{produto.qtMetroPt}}</td>
-            <td class="money">{{produto.qtMetroCn}}</td>-->
-            <td><span>R$ </span><span class="money">{{produto.eng_cd1}}</span></td>
-            <td><span>R$ </span><span class="money">{{produto.eng_cd3}}</span></td>
+            <td>{{produto.compProduto}}mm x {{produto.largProduto}}mm x {{produto.espProduto}}mm</td>
+            <td><span>R$ </span><span class="money">{{produto.precos[2].preco}}</span></td>
+            <td><span>R$ </span><span class="money">{{produto.precos[3].preco}}</span></td>
           </tr>
         </tbody>
         </table>
@@ -111,20 +92,16 @@
 
     <!--Tabela HC/KA-->
       <div class="tab-pane fade" id="tabela_HcKa">
+        <h4>Home Center / Key Account</h4>
+        <hr>
         <table class="table table-striped table-hover col-md-12">
         <thead>
           <tr>
             <th>#</th>
+            <th>Tipo</th>
             <th>Linha</th>
-            <th>Formato</th>
             <th>Descrição</th>
-            <th>Capa</th>
-            <th>Med.</th>
-            <th>Un/Cx</th>
-            <th>Cx/Pt</th>
-            <!--<th>Mt/Cx</th>
-            <th>Mt/Pt</th>
-            <th>Mt/Cn</th>-->
+            <th>Medidas (C x L x E)</th>
             <th>Preço CD1</th>
             <th>Preço CD3</th>
           </tr>
@@ -132,18 +109,12 @@
         <tbody *ngFor="let produto of produtos; let i = index" [attr.data-index]="i">
           <tr>
             <td>{{i + 1}}</td>
+            <td>{{produto.tipoProduto}}</td>
             <td>{{produto.linhaProduto}}</td>
-            <td>{{produto.formatoProduto}}</td>
             <td>{{produto.descricaoProduto}}</td>
-            <td>{{produto.capaProduto}}</td>
-            <td>{{produto.medicaoProduto}}</td>
-            <td>{{produto.qtUnidCx}}</td>
-            <td>{{produto.qtCxPallet}}</td>
-            <!--<td class="money">{{produto.qtMetroCx}}</td>
-            <td class="money">{{produto.qtMetroPt}}</td>
-            <td class="money">{{produto.qtMetroCn}}</td>-->
-            <td><span>R$ </span><span class="money">{{produto.hcka_cd1}}</span></td>
-            <td><span>R$ </span><span class="money">{{produto.hcka_cd3}}</span></td>
+            <td>{{produto.compProduto}}mm x {{produto.largProduto}}mm x {{produto.espProduto}}mm</td>
+            <td><span>R$ </span><span class="money">{{produto.precos[4].preco}}</span></td>
+            <td><span>R$ </span><span class="money">{{produto.precos[5].preco}}</span></td>
           </tr>
         </tbody>
         </table>
@@ -153,20 +124,16 @@
 
     <!--Tabela AT/DT-->
       <div class="tab-pane fade" id="tabela_AtDt">
+        <h4>Atacado / Distribuidores</h4>
+        <hr>
         <table class="table table-striped table-hover col-md-12">
         <thead>
           <tr>
             <th>#</th>
+            <th>Tipo</th>
             <th>Linha</th>
-            <th>Formato</th>
             <th>Descrição</th>
-            <th>Capa</th>
-            <th>Med.</th>
-            <th>Un/Cx</th>
-            <th>Cx/Pt</th>
-            <!--<th>Mt/Cx</th>
-            <th>Mt/Pt</th>
-            <th>Mt/Cn</th>-->
+            <th>Medidas (C x L x E)</th>
             <th>Preço CD1</th>
             <th>Preço CD3</th>
           </tr>
@@ -174,18 +141,12 @@
         <tbody *ngFor="let produto of produtos; let i = index" [attr.data-index]="i">
           <tr>
             <td>{{i + 1}}</td>
+            <td>{{produto.tipoProduto}}</td>
             <td>{{produto.linhaProduto}}</td>
-            <td>{{produto.formatoProduto}}</td>
             <td>{{produto.descricaoProduto}}</td>
-            <td>{{produto.capaProduto}}</td>
-            <td>{{produto.medicaoProduto}}</td>
-            <td>{{produto.qtUnidCx}}</td>
-            <td>{{produto.qtCxPallet}}</td>
-            <!--<td class="money">{{produto.qtMetroCx}}</td>
-            <td class="money">{{produto.qtMetroPt}}</td>
-            <td class="money">{{produto.qtMetroCn}}</td>-->
-            <td><span>R$ </span><span class="money">{{produto.atdt_cd1}}</span></td>
-            <td><span>R$ </span><span class="money">{{produto.atdt_cd3}}</span></td>
+            <td>{{produto.compProduto}}mm x {{produto.largProduto}}mm x {{produto.espProduto}}mm</td>
+            <td><span>R$ </span><span class="money">{{produto.precos[6].preco}}</span></td>
+            <td><span>R$ </span><span class="money">{{produto.precos[7].preco}}</span></td>
           </tr>
         </tbody>
         </table>
@@ -224,19 +185,20 @@
             <input type="text" class="form-control input-sm" [(ngModel)]="descricaoProduto" name="descricaoProduto" placeholder="Descrição Detalhada" />
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <div class="input-group">
             <label for="">Código</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="codigoProduto" name="codigoProduto" placeholder="Código do Produto" />
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6">
           <div class="input-group">
             <label for="">Linha</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="linhaProduto" name="linhaProduto" placeholder="Linha do Produto" />
           </div>
         </div>
-        <div class="form-group col-md-1">
+        <h5 class="page-header">Medidas do Produto</h5>
+        <div class="form-group col-md-3">
           <div class="input-group">
             <label for="">Medição</label>
             <select class="form-control input-sm" id="medicaoProduto" [(ngModel)]="medicaoProduto">
@@ -252,8 +214,7 @@
             <input type="text" class="form-control input-sm" [(ngModel)]="capaProduto" name="capaProduto" placeholder="Capa de Uso" />
           </div>
         </div>
-        <h5 class="page-header">Medidas do Produto</h5>
-        <div class="form-group col-md-4" style="padding: 0">
+        <div class="form-group col-md-6" style="padding: 0">
           <div class="input-group">
             <label for="" class="col-md-12">Dimensões - mm (Comp x Larg x Esp)</label>
             <div>
@@ -269,34 +230,28 @@
             </div>
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <div class="input-group">
             <label for="">Unidades por Caixa</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="unidCx" name="unidCx" placeholder="Unidades por Caixa" />
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <div class="input-group">
             <label for="">Caixas por Pallet</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="cxPallet" name="cxPallet" placeholder="Caixas por Pallet" />
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <div class="input-group">
             <label for="">Metros por Caixa</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="metroCx" name="metroCx" placeholder="Metros por Caixa" />
           </div>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <div class="input-group">
             <label for="">Metros por Pallet</label>
             <input type="text" class="form-control input-sm" [(ngModel)]="metroPallet" name="metroPallet" placeholder="Metros por Pallet" />
-          </div>
-        </div>
-        <div class="form-group col-md-4">
-          <div class="input-group">
-            <label for="">Metros por Container</label>
-            <input type="text" class="form-control input-sm" [(ngModel)]="metroContainer" name="metroContainer" placeholder="Metros por Container" />
           </div>
         </div>
         <h5 class="page-header">Preços</h5>
@@ -391,6 +346,207 @@
           <input class="btn btn-primary btn-block btn-sm" (click)="adicionaProduto()" value="CONFIRMAR">
         </div>
       </div>
+
+
+
+
+
+
+      <!--Editar Produto-->
+      <div class="tab-pane fade" id="editar_Produto">
+        <div class="form-group col-md-12">
+          <select class="form-control input-sm" [(ngModel)]="editarProduto" (change)="editProduto()">
+            <option value="">Selecione o Produto:</option>
+            <option *ngFor="let produto of produtos; let i = index" [attr.data-index]="i" [value]="i" >{{produto.descricaoProduto}}</option>
+          </select>
+        </div>
+        <div *ngIf="editarProduto">
+          <h5 class="page-header">Geral</h5>
+          <div class="form-group col-md-2">
+            <div class="input-group">
+              <label for="">Tipo</label>
+              <select class="form-control input-sm" id="tipoProduto" [(ngModel)]="tipoProduto">
+                <option value="" disabled=true>Selecione:</option>
+                <option value="Piso">Piso</option>
+                <option value="Rodapé">Rodapé</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-md-10">
+            <div class="input-group">
+              <label for="">Nome</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="nomeProduto" name="nomeProduto" placeholder="Nome do Produto" />
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <div class="input-group">
+              <label for="">Descrição Detalhada</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="descricaoProduto" name="descricaoProduto" placeholder="Descrição Detalhada" />
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <div class="input-group">
+              <label for="">Código</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="codigoProduto" name="codigoProduto" placeholder="Código do Produto" />
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <div class="input-group">
+              <label for="">Linha</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="linhaProduto" name="linhaProduto" placeholder="Linha do Produto" />
+            </div>
+          </div>
+          <h5 class="page-header">Medidas do Produto</h5>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Medição</label>
+              <select class="form-control input-sm" id="medicaoProduto" [(ngModel)]="medicaoProduto">
+                <option value="" disabled=true>Selecione:</option>
+                <option value="linear">m</option>
+                <option value="quadrado">m²</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Capa de Uso - mm</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="capaProduto" name="capaProduto" placeholder="Capa de Uso" />
+            </div>
+          </div>
+          <div class="form-group col-md-6" style="padding: 0">
+            <div class="input-group">
+              <label for="" class="col-md-12">Dimensões - mm (Comp x Larg x Esp)</label>
+              <div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input-sm " [(ngModel)]="compProduto" name="compProduto" placeholder="Comp." />
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input-sm" [(ngModel)]="largProduto" name="largProduto" placeholder="Larg." />
+                </div>
+                <div class="col-md-4">
+                  <input type="text" class="form-control input-sm" [(ngModel)]="espProduto" name="espProduto" placeholder="Esp." />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Unidades por Caixa</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="unidCx" name="unidCx" placeholder="Unidades por Caixa" />
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Caixas por Pallet</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="cxPallet" name="cxPallet" placeholder="Caixas por Pallet" />
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Metros por Caixa</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="metroCx" name="metroCx" placeholder="Metros por Caixa" />
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <label for="">Metros por Pallet</label>
+              <input type="text" class="form-control input-sm" [(ngModel)]="metroPallet" name="metroPallet" placeholder="Metros por Pallet" />
+            </div>
+          </div>
+          <h5 class="page-header">Preços</h5>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="col-md-4">Canal</th>
+                <th class="col-md-2">Centro</th>
+                <th class="col-md-2" style="text-align: right">Fracionado</th>
+                <th class="col-md-1" style="text-align: right">Desc. 1</th>
+                <th class="col-md-1" style="text-align: right">Desc. 2</th>
+                <th class="col-md-1" style="text-align: right">Desc. 3</th>
+                <th class="col-md-1" style="text-align: right">Desc. 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>REVENDA / VAREJO</td>
+                <td>CD1</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_rev_cd1" name="preco_rev_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_rev_cd1" name="desc1_rev_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_rev_cd1" name="desc2_rev_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_rev_cd1" name="desc3_rev_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_rev_cd1" name="desc4_rev_cd1" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>REVENDA / VAREJO</td>
+                <td>CD3</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_rev_cd3" name="preco_rev_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_rev_cd3" name="desc1_rev_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_rev_cd3" name="desc2_rev_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_rev_cd3" name="desc3_rev_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_rev_cd3" name="desc4_rev_cd3" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>ENGENHARIA</td>
+                <td>CD1</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_eng_cd1" name="preco_eng_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_eng_cd1" name="desc1_eng_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_eng_cd1" name="desc2_eng_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_eng_cd1" name="desc3_eng_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_eng_cd1" name="desc4_eng_cd1" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>ENGENHARIA</td>
+                <td>CD3</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_eng_cd3" name="preco_eng_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_eng_cd3" name="desc1_eng_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_eng_cd3" name="desc2_eng_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_eng_cd3" name="desc3_eng_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_eng_cd3" name="desc4_eng_cd3" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>HOME CENTER / KEY ACCOUNT</td>
+                <td>CD1</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_hcka_cd1" name="preco_hcka_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_hcka_cd1" name="desc1_hcka_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_hcka_cd1" name="desc2_hcka_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_hcka_cd1" name="desc3_hcka_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_hcka_cd1" name="desc4_hcka_cd1" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>HOME CENTER / KEY ACCOUNT</td>
+                <td>CD3</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_hcka_cd3" name="preco_hcka_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_hcka_cd3" name="desc1_hcka_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_hcka_cd3" name="desc2_hcka_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_hcka_cd3" name="desc3_hcka_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_hcka_cd3" name="desc4_hcka_cd3" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>DISTRIBUIDORAS / ATACADO</td>
+                <td>CD1</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_dist_cd1" name="preco_dist_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_dist_cd1" name="desc1_dist_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_dist_cd1" name="desc2_dist_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_dist_cd1" name="desc3_dist_cd1" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_dist_cd1" name="desc4_dist_cd1" placeholder="" /></td>
+              </tr>
+              <tr>
+                <td>DISTRIBUIDORAS / ATACADO</td>
+                <td>CD3</td>
+                <td><input type="text" style="text-align: right" class="money form-control input-sm" [(ngModel)]="preco_dist_cd3" name="preco_dist_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc1_dist_cd3" name="desc1_dist_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc2_dist_cd3" name="desc2_dist_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc3_dist_cd3" name="desc3_dist_cd3" placeholder="" /></td>
+                <td><input type="text" style="text-align: right" class="percent form-control input-sm" [(ngModel)]="desc4_dist_cd3" name="desc4_dist_cd3" placeholder="" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="col-md-12" style="padding: 0">
+            <input class="btn btn-primary btn-block btn-sm" (click)="modificaProduto()" value="CONFIRMAR">
+          </div>
+        </div>
+      </div>
+
 
 
 
@@ -491,7 +647,7 @@
           </tbody>
         </table>
         <div *ngIf="select_desc" class="col-md-12" style="padding: 0">
-          <input class="btn btn-primary btn-block btn-sm" (click)="cadastraDesconto()" value="CONFIRMAR">
+          <input class="btn btn-primary btn-block btn-sm" (click)="modificaDesconto()" value="CONFIRMAR">
         </div>
 
       </div>
@@ -505,16 +661,16 @@
         <h4 class="page-header" style="padding-left: 30px">Controle de Estoque</h4>
         <div class="form-group col-md-12">
           <div class="input-group">
-            <select class="form-control input-sm" [disabled]="disable_select" [(ngModel)]="cons_nomeProduto" name="cons_nomeProduto" id="cons_nomeProduto" (change)="funcao_desc(desc_nome, cons_nomeProduto)" >
+            <select class="form-control input-sm" [disabled]="disable_select" [(ngModel)]="cons_nomeProduto" name="cons_nomeProduto" id="cons_nomeProduto" (change)="funcao_estoque()" >
               <option value="" disabled=true>Nome do Produto:</option> 
-              <option *ngFor="let produto of produtos" [value]="produto._id" >{{produto.descricaoProduto}}</option>
+              <option *ngFor="let produto of produtos; let i = index" [attr.data-index]="i" [value]="i" >{{produto.descricaoProduto}}</option>
             </select>
           </div>
         </div>
         <div class="form-group col-md-2 col-md-offset-10">
-          <button *ngIf="select_desc" class="btn btn-danger btn-sm btn-block" (click)="limpaBuscaEstoque()">Nova Consulta</button>
+          <button *ngIf="disable_select" class="btn btn-danger btn-sm btn-block" (click)="limpaBuscaEstoque()">Nova Consulta</button>
         </div>
-        <table *ngIf="select_desc" class="table table-striped table-hover">
+        <table *ngIf="disable_select" class="table table-striped table-hover">
           <thead>
             <tr>
               <th class="col-md-8">Produto</th>
@@ -524,7 +680,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Produto</td>
+              <td>{{estoqueEdit.descricaoProduto}}</td>
               <td><input type="text" style="text-align: right" class="form-control input-sm" [(ngModel)]="quant_estoque" name="quant_estoque" placeholder="" /></td>
               <td>
                 <select class="form-control input-sm" [(ngModel)]="medida_estoque" name="medida_estoque" id="medida_estoque" >
@@ -538,8 +694,8 @@
             </tr>
           </tbody>
         </table>
-        <div *ngIf="select_desc" class="col-md-12" style="padding: 0">
-          <input class="btn btn-primary btn-block btn-sm" (click)="cadastraDesconto()" value="CONFIRMAR">
+        <div *ngIf="disable_select" class="col-md-12" style="padding: 0">
+          <input class="btn btn-primary btn-block btn-sm" (click)="modificaEstoque()" value="CONFIRMAR">
         </div>
       </div>
 

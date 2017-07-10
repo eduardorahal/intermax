@@ -22,7 +22,7 @@ export class GetService {
       return Promise.resolve(this.produto);
     }
     return new Promise(resolve => {
-      this.http.get('produtos/consulta')
+      this.http.get('http://localhost:3000/produtos/consulta')
         .map(res => res.json())
         .subscribe(produto => {
           this.produto = produto;
@@ -40,7 +40,7 @@ export class GetService {
       return Promise.resolve(this.representante);
     }
     return new Promise(resolve => {
-      this.http.get('representantes/consulta')
+      this.http.get('http://localhost:3000/representantes/consulta')
         .map(res => res.json())
         .subscribe(representante => {
           this.representante = representante;
@@ -54,7 +54,7 @@ export class GetService {
       return Promise.resolve(this.regiao);
     }
     return new Promise(resolve => {
-      this.http.get('regioes/consulta')
+      this.http.get('http://localhost:3000/regioes/consulta')
         .map(res => res.json())
         .subscribe(regiao => {
           this.regiao = regiao;

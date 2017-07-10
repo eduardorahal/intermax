@@ -12,49 +12,137 @@
 
   <!--CADASTRAR PEDIDO-->
   <div class="tab-pane fade active in" id="cadastrar_Pedido">
-    <div class="form-group col-md-11">
-      <div class="input-group">
-        <label for="">Cliente</label>
-        <input type="text" class="form-control input-sm" [(ngModel)]="consulta_cliente" name="consulta_cliente" placeholder="Cliente" />
+    <div class="form-group col-md-3" *ngIf="!clientePedido">
+      <div *ngIf="!clientePedido">
+        <button class="btn btn-primary btn-sm btn-block" (click)="consultaOrcamento()">Recuperar Orçamento</button>
       </div>
     </div>
-    <div class="col-md-1">
-      <label>Novo</label>
+    <div class="form-group col-md-11" *ngIf="!clientePedido">
+      <div class="input-group">
+        <input type="text" class="form-control input-sm" [(ngModel)]="consulta_cliente" id="consulta_cliente" placeholder="Selecionar Cliente" />
+      </div>
+    </div>
+    <div class="col-md-1" *ngIf="!clientePedido">
       <button class="btn btn-primary btn-sm btn-block" (click)="consultaCliente()"><span class="glyphicon glyphicon-search"></span></button>
     </div>
     <div *ngIf="clientePedido">
-      <div class="col-md-4">
-        <label for="">CNPJ</label>
-        <p class="cnpj">{{clientePedido.cnpj}}</p>
+      <div class="form-group col-md-3">
+        <label for="" style="display: inline">CNPJ:</label>
+        <p class="cnpj" *ngIf="clientePedido" style="padding: 0; display: inline">{{clientePedido.cnpj}}</p>
       </div>
-      <div class="col-md-4">
-        <label for="">Insc.Estadual</label>
-        <p>{{clientePedido.insc_estadual}}</p>
+      <div class="form-group col-md-8">
+        <label for="" style="display: inline">Razão Social:</label>
+        <p style="padding: 0; display: inline" *ngIf="clientePedido">{{clientePedido.razao}}</p>
       </div>
-      <div class="col-md-4">
-        <label for="">Categoria</label>
-        <p>{{clientePedido.categoria}}</p>
+      <div class="col-md-1" *ngIf="clientePedido">
+        <button class="btn btn-danger btn-sm btn-block" (click)="limpaCliente()">Alterar</button>
       </div>
-      <div class="col-md-12">
-        <label for="">Razão Social</label>
-        <p>{{clientePedido.razao}}</p>
+      <div class="form-group col-md-6">
+        <label>Endereço de Faturamento:</label>
+        <div class="col-md-12" style="padding: 0">
+          <select *ngIf="clientePedido" class="form-control input-sm" [(ngModel)]="endereco_faturamento" name="endereco_faturamento">
+            <option (select)="select(endereco.id)" *ngFor="let endereco of clientePedido.enderecos" [value]="endereco.id">{{endereco.endereco}} - {{endereco.bairro}} - {{endereco.cidade}}/{{endereco.estado}}</option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-4">
-        <label for="">Região</label>
-        <p>{{clientePedido.regiao}}</p>
+      <div class="form-group col-md-6">
+        <label>Endereço de Entrega:</label>
+        <div class="col-md-12" style="padding: 0">
+          <select *ngIf="clientePedido" class="form-control input-sm" [(ngModel)]="endereco_entrega" name="endereco_entrega">
+            <option *ngFor="let endereco of clientePedido.enderecos" [value]="endereco.id">{{endereco.endereco}} - {{endereco.bairro}} - {{endereco.cidade}}/{{endereco.estado}}</option>
+          </select>
+        </div>
       </div>
-      <div class="col-md-4">
-        <label for="">Contato</label>
-        <p>{{clientePedido.contato}}</p>
-      </div>
-      <div class="col-md-4">
-        <label for="">Cidade</label>
-        <p>{{clientePedido.contato}}</p>
-      </div>      
     </div>
-    
+    <div class="form-group col-md-12">
+      <hr>
+    </div>
+    <div class="form-group col-md-4">
+      <select class="form-control input-sm" [disabled]="!clientePedido" [(ngModel)]="centro" (change)="alteraCD()">
+        <option value="">Faturamento:</option>
+        <option value="cd1">CD 1</option>
+        <option value="cd3">CD 3</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <select class="form-control input-sm"  [(ngModel)]="pagamento">
+        <option value="">Forma de Pagamento:</option>
+        <option value="cheque">Cheque</option>
+        <option value="boleto">Boleto</option>
+        <option value="transferencia">Transferência Bancária</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <select class="form-control input-sm"  [(ngModel)]="imposto">
+        <option value="">Imposto:</option>
+        <option value="difal">DIFAL.</option>
+        <option value="st">ST - TEM IE</option>
+      </select>
+    </div>
+    <div class="form-group col-md-12">
+      <div class="input-group">
+        <table class="table table-striped table-hover" >
+          <thead>
+            <tr>
+              <th class="col-md-5">
+                <div class="col-md-1">#</div>
+                <div class="col-md-11">Produto</div>
+              </th>
+              <th class="col-md-7" style="text-align: right">
+                <div class="col-md-2">Vlr Unit</div>
+                <div class="col-md-2">Quant.</div>
+                <div class="col-md-2">Medida</div>
+                <div class="col-md-2">Desconto</div>
+                <div class="col-md-3">Vlr Total</div>
+                <div class="col-md-1"></div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of prodArr; let i = index">
+              <td class="col-md-5">
+                <div class="col-md-1">{{i + 1}}</div>
+                <div class="col-md-11" style="padding-right: 0px">
+                  <select class="form-control input-sm" [disabled]="!liberaProduto" [(ngModel)]="prodArr[i].produto" name="prodArr[i].produto" (change)="selecionaProduto(i)">
+                    <option value="">Selecione o Produto:</option>
+                    <option *ngFor="let produto of produtos" [value]="produto._id" >{{produto.descricaoProduto}}</option>
+                  </select>
+                </div>
+              </td>
+              <td class="col-md-7">
+                <div class="col-md-2" style="padding-left: 5px; padding-right: 5px"><input class="money form-control input-sm" type="text" [(ngModel)]="prodArr[i].vlrUnit"></div>
+                <div class="col-md-2" style="padding-left: 5px; padding-right: 5px"><input class="number form-control input-sm" type="text" [(ngModel)]="prodArr[i].quant" (change)="insereQuant(i)"></div>
+                <div class="col-md-2" style="padding-left: 5px; padding-right: 5px">
+                  <select class="form-control input-sm"  [(ngModel)]="prodArr[i].medida" name="prodArr[i].medida" [attr.id]="'prodArr' + i" (change)="insereQuant(i)">
+                    <option value="linear">m</option>
+                    <option value="quadrado">m²</option>
+                    <option value="caixa">Caixa</option>
+                    <option value="pallet">Pallet</option>
+                  </select>
+                </div>
+                <div class="col-md-2" style="padding-left: 5px; padding-right: 5px"><input class="form-control input-sm" type="text" [(ngModel)]="prodArr[i].desconto"></div>
+                <div class="col-md-3" style="padding-left: 5px; padding-right: 5px"><input class="form-control input-sm" type="text" [(ngModel)]="prodArr[i].vlrTotal"></div>
+                <div class="col-md-1" *ngIf="!prodArr[i+1]"><a style="cursor:pointer;" (click)="adicionaProduto(prodArr[i])" ><span class="glyphicon glyphicon-plus" style="color:blue; vertical-align: middle"></span></a></div>
+                <div class="col-md-1" *ngIf="prodArr[i+1]"><a style="cursor:pointer;" (click)="removeProduto(i)" ><span class="glyphicon glyphicon-minus" style="color:red; vertical-align: middle"></span></a></div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <div class="col-md-offset-6">
+                  Total:
+                </div>
+                <div class="col-md-offset-8">
+                  {{totalGeral}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="col-md-12">
-      <input class="btn btn-success btn-block btn-sm" (click)="cadastraCliente()" value="CONFIRMAR">
+      <input class="btn btn-success btn-block btn-sm" (click)="cadastraPedido()" value="CONFIRMAR">
     </div>
   </div>
 

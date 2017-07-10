@@ -60,199 +60,55 @@ const ProdutoSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  metroContainer:  {
+  precos:[{
+    centro:   {
+      type: String,
+      required: false
+    },
+    categoria:   {
+      type: String,
+      required: false
+    },
+    preco:   {
+      type: String,
+      required: false
+    },
+    desc1:   {
+      type: String,
+      required: false
+    },
+    desc2:   {
+      type: String,
+      required: false
+    },
+    desc3:   {
+      type: String,
+      required: false
+    },
+    desc4:   {
+      type: String,
+      required: false
+    }
+  }],
+  descontos:[{
+    tipo:   {
+      type: String,
+      required: false
+    },
+    quant:   {
+      type: String,
+      required: false
+    },
+    medida:   {
+      type: String,
+      required: false
+    }
+  }],
+  quantEstoque:  {
     type: String,
     required: false
   },
-  preco_rev_cd1:   {
-    type: String,
-    required: false
-  },
-  desc1_rev_cd1:   {
-    type: String,
-    required: false
-  },
-  desc2_rev_cd1:   {
-    type: String,
-    required: false
-  },
-  desc3_rev_cd1:   {
-    type: String,
-    required: false
-  },
-  desc4_rev_cd1:   {
-    type: String,
-    required: false
-  },
-  preco_rev_cd3:   {
-    type: String,
-    required: false
-  },
-  desc1_rev_cd3:   {
-    type: String,
-    required: false
-  },
-  desc2_rev_cd3:   {
-    type: String,
-    required: false
-  },
-  desc3_rev_cd3:   {
-    type: String,
-    required: false
-  },
-  desc4_rev_cd3:   {
-    type: String,
-    required: false
-  },
-  preco_eng_cd1:   {
-    type: String,
-    required: false
-  },
-  desc1_eng_cd1:   {
-    type: String,
-    required: false
-  },
-  desc2_eng_cd1:   {
-    type: String,
-    required: false
-  },
-  desc3_eng_cd1:   {
-    type: String,
-    required: false
-  },
-  desc4_eng_cd1:   {
-    type: String,
-    required: false
-  },
-  preco_eng_cd3:   {
-    type: String,
-    required: false
-  },
-  desc1_eng_cd3:   {
-    type: String,
-    required: false
-  },
-  desc2_eng_cd3:   {
-    type: String,
-    required: false
-  },
-  desc3_eng_cd3:   {
-    type: String,
-    required: false
-  },
-  desc4_eng_cd3:   {
-    type: String,
-    required: false
-  },
-  preco_hcka_cd1:   {
-    type: String,
-    required: false
-  },
-  desc1_hcka_cd1:   {
-    type: String,
-    required: false
-  },
-  desc2_hcka_cd1:   {
-    type: String,
-    required: false
-  },
-  desc3_hcka_cd1:   {
-    type: String,
-    required: false
-  },
-  desc4_hcka_cd1:   {
-    type: String,
-    required: false
-  },
-  preco_hcka_cd3:   {
-    type: String,
-    required: false
-  },
-  desc1_hcka_cd3:   {
-    type: String,
-    required: false
-  },
-  desc2_hcka_cd3:   {
-    type: String,
-    required: false
-  },
-  desc3_hcka_cd3:   {
-    type: String,
-    required: false
-  },
-  desc4_hcka_cd3:   {
-    type: String,
-    required: false
-  },
-  preco_dist_cd1:   {
-    type: String,
-    required: false
-  },
-  desc1_dist_cd1:   {
-    type: String,
-    required: false
-  },
-  desc2_dist_cd1:   {
-    type: String,
-    required: false
-  },
-  desc3_dist_cd1:   {
-    type: String,
-    required: false
-  },
-  desc4_dist_cd1:   {
-    type: String,
-    required: false
-  },
-  preco_dist_cd3:   {
-    type: String,
-    required: false
-  },
-  desc1_dist_cd3:   {
-    type: String,
-    required: false
-  },
-  desc2_dist_cd3:   {
-    type: String,
-    required: false
-  },
-  desc3_dist_cd3:   {
-    type: String,
-    required: false
-  },
-  desc4_dist_cd3:   {
-    type: String,
-    required: false
-  },
-  quant_desc1:   {
-    type: String,
-    required: false
-  },
-  medida_desc1:   {
-    type: String,
-    required: false
-  },
-  quant_desc2:   {
-    type: String,
-    required: false
-  },
-  medida_desc2:   {
-    type: String,
-    required: false
-  },
-  quant_desc3:   {
-    type: String,
-    required: false
-  },
-  medida_desc3:   {
-    type: String,
-    required: false
-  },
-  quant_desc4:   {
-    type: String,
-    required: false
-  },
-  medida_desc4:   {
+  medidaEstoque:  {
     type: String,
     required: false
   },
