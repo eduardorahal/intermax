@@ -9,15 +9,15 @@
   },
   "dependencies": {
     "bcryptjs": "*",
-    "body-parser": "*",
-    "cors": "*",
-    "express": "*",
-    "jsonwebtoken": "*",
-    "mongoose": "*",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.10",
     "mongoose-auto-increment": "^5.0.1",
-    "mongoose-sequence": "^3.1.0",
-    "passport": "*",
-    "passport-jwt": "*"
+    "mongoose-sequence": "^3.2.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
   },
   "author": "Eduardo Rahal",
   "license": "ISC"
