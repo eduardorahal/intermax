@@ -1,22 +1,22 @@
-webpackJsonp([1,3],{
+webpackJsonp([2,4],{
 
-/***/ 298:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 407:
+/***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(434);
+var content = __webpack_require__(694);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(497)(content, {});
+var update = __webpack_require__(758)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js?sourcemap!../node_modules/postcss-loader/index.js!./styles.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js?sourcemap!../node_modules/postcss-loader/index.js!./styles.css");
+		module.hot.accept("!!../node_modules/css-loader/index.js?{\"sourceMap\":false}!../node_modules/postcss-loader/index.js!./styles.css", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js?{\"sourceMap\":false}!../node_modules/postcss-loader/index.js!./styles.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -25,12 +25,12 @@ if(false) {
 	module.hot.dispose(function() { update(); });
 }
 
-/***/ },
+/***/ }),
 
-/***/ 434:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 694:
+/***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(435)();
+exports = module.exports = __webpack_require__(695)();
 // imports
 
 
@@ -40,10 +40,10 @@ exports.push([module.i, "/* You can add global styles to this file, and also imp
 // exports
 
 
-/***/ },
+/***/ }),
 
-/***/ 435:
-/***/ function(module, exports) {
+/***/ 695:
+/***/ (function(module, exports) {
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
@@ -97,10 +97,10 @@ module.exports = function() {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ 497:
-/***/ function(module, exports) {
+/***/ 758:
+/***/ (function(module, exports) {
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
@@ -350,15 +350,15 @@ function updateLink(linkElement, obj) {
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ 499:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 762:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(298);
+module.exports = __webpack_require__(407);
 
 
-/***/ }
+/***/ })
 
-},[499]);
+},[762]);
 //# sourceMappingURL=styles.bundle.map

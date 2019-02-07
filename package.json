@@ -17,7 +17,7 @@
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-sequence": "^3.2.0",
     "passport": "^0.4.0",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "4.0.0"
   },
   "author": "Eduardo Rahal",
   "license": "ISC"
